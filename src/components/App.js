@@ -44,7 +44,9 @@ class App extends Component {
         <section className="App__content">
           <Compose />
           {posts.map(post => (
-            <Post key={post.id} />
+            <Post key={post.id} 
+              texts={post.text}
+              dates={post.date} />
           ))}
         </section>
       </div>
