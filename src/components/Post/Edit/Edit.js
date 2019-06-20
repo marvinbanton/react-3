@@ -20,7 +20,7 @@ export default class Edit extends Component {
   }
 
   updatePost() {
-    const date = new Date().toLocaleString('en-US', {
+    const date = new Date().toLocaleString('en-PH', {
       day: 'numeric',
       month: 'short',
       year: 'numeric',
