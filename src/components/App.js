@@ -29,7 +29,6 @@ class App extends Component {
         posts: response.data 
         })
       });
-
   }
 
   updatePost(id, text, date) {
@@ -67,7 +66,7 @@ class App extends Component {
           this.setState({ 
             posts: this.state.posts.concat(results.data) 
           })
-      })
+      }) 
   }
 
   searchPost = (text) => {
@@ -81,7 +80,7 @@ class App extends Component {
   }
 
   render() {
-    const { posts } = this.state;
+    const { posts } = this.state; 
 
     return (
       <div className="App__parent">
