@@ -11,7 +11,6 @@ import './Post.css';
 
 import Edit from './Edit/Edit';
 
-console.log('1233434453546')
 ///////////// THIS COMPONENT IS BEING RENDERED IN THE *APP* COMPONENT
 
 export default class Post extends Component {
@@ -57,6 +56,7 @@ export default class Post extends Component {
     // const editing = this.state.editing
     // const showMasterMenu = this.state.showMasterMenu
     const { editing, showMasterMenu } = this.state;
+    // const { id, deletePostFn } = this.props.deletePostFn;
     
     return (
       // Main body of post
@@ -71,7 +71,7 @@ export default class Post extends Component {
             style={{ display: showMasterMenu ? 'flex' : 'none' }}
           >
             <span onClick={this.showEdit}>Edit</span>
-            <span>Delete</span>
+            <span onClick={() => this.props.deletePostFn(this.props.id)}>Delete</span>
           </div>
         </div>
 

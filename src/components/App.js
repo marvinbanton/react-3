@@ -45,26 +45,57 @@ class App extends Component {
   }
 
 
-  deletePost() {}
+  deletePost(id) {
+    axios
+    .delete(`https://localhost:9090/posts/${id}`)
+    .then(response => {
+        this.setState({
+        posts: this.state.posts.filter(post => post.id !== id)
+      });
+    });
+  }
 
-  createPost() {}
+  createPost(text) {
+      axios
+        .post('http://localhost:9090/posts', { text })
+        .then( results => {
+          this.setState({ 
+            posts: this.state.posts.concat(results.data) 
+          })
+      })
+  }
+
+  searchPost = (text) => {
+    axios
+      .get(`http://localhost:9090/posts?q=${encodeURI(text)}`)
+      .then(res => {
+        this.setState({
+          posts: res.data
+        })
+      })
+  }
 
   render() {
     const { posts } = this.state;
 
     return (
       <div className="App__parent">
-        <Header />
+        <Header 
+          searchPostFn={this.searchPost} 
+        />
 
         <section className="App__content">
-          <Compose />
+          <Compose 
+            createPostFn={this.createPost}
+          />
           {posts.map(post => (
             <Post 
               key={post.id} 
               text={post.text}
-              date={post.date} 
+              date={post.date}
+              id={post.id} 
               updatePostFn={this.updatePost}
-              id={post.id}
+              deletePostFn={this.deletePost}
               />
           ))}
         </section>
