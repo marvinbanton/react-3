@@ -24,7 +24,11 @@ class App extends Component {
   componentDidMount() {
     axios
     .get('http://localhost:9090/posts')
-    .then(response => this.setState({ posts: response.data }));
+    .then(response => {
+      this.setState({ 
+        posts: response.data 
+        })
+      });
 
   }
 
@@ -47,13 +51,14 @@ class App extends Component {
 
   deletePost(id) {
     axios
-    .delete(`https://localhost:9090/posts/${id}`)
-    .then(response => {
+      .delete(`http://localhost:9090/posts/${id}`)
+      .then(res => {
         this.setState({
-        posts: this.state.posts.filter(post => post.id !== id)
-      });
-    });
+          posts: this.state.posts.filter(p => p.id !== id)
+        })
+      })
   }
+
 
   createPost(text) {
       axios

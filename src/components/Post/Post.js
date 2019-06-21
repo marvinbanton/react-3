@@ -55,9 +55,8 @@ export default class Post extends Component {
     // This is destructuring! You can also think of it as being written as so:
     // const editing = this.state.editing
     // const showMasterMenu = this.state.showMasterMenu
-    const { editing, showMasterMenu } = this.state;
-    // const { id, deletePostFn } = this.props.deletePostFn;
-    
+    const { editing, showMasterMenu, id } = this.state;
+
     return (
       // Main body of post
       <section className="Post__parent" onClick={this.hideMasterMenu}>
